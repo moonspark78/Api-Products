@@ -5,6 +5,7 @@ import "./style.css";
 export const Products = () => {
 
     const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
 
     useEffect(() => {
@@ -18,15 +19,26 @@ export const Products = () => {
         fetchProducts();
     },[]);
 
+    const filteredProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
 
   return (
     <div className='pro'>
         <h1>Products</h1>
+        <input
+            type="text" 
+            placeholder="Enter your name" 
+            name="text" 
+            class="input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <div className='card'>
             {
-                products.map(product =>(
+                filteredProducts.map(product =>(
                     <div key={product.id}>
-                        <img src={product.thumbnail} alt='photo-produit'/>
+                        <img src={product.thumbnail} alt='photoproduit'/>
                         <p>{product.title}</p>
                     </div>
                 ))
