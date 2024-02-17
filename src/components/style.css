@@ -18,3 +18,8 @@
   align-items: center;
   padding: 10px;
 }
+
+.card div img{
+    height: 190px;
+    width: 270px;
+}
