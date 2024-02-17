@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import "./style.css";
 /* https://dummyjson.com/products */
 
 export const Products = () => {
@@ -11,6 +12,7 @@ export const Products = () => {
             const reponse = await fetch("https://dummyjson.com/products"); 
             const data = await reponse.json();
             console.log(data.products);
+            setProducts(data.products);
 
         };
         fetchProducts();
@@ -18,6 +20,17 @@ export const Products = () => {
 
 
   return (
-    <div>Products</div>
+    <div className='pro'>
+        <h1>Products</h1>
+        <div className='card'>
+            {
+                products.map(product =>(
+                    <div key={product.id}>
+                        <p>{product.title}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
   )
 }
