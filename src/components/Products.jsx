@@ -61,6 +61,7 @@ export const Products = () => {
                 ))
             }
         </div>
+        
         <div className="pagination">
                 {pages.map((page, index) => (
                     <button key={index} onClick={() => handlePageClick(index + 1)}>
